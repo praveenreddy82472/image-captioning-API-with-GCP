@@ -71,17 +71,11 @@ curl -X POST "https://caption-api-t4ktkkp2ca-uc.a.run.app/caption" ^
 
 
 # Response
-
+```
 {
   "filename": "28d0aa0b-e5bc-43af-95e9-d7c3519d47ff.jpg",
   "image_uri": "gs://image-caption-bucket/28d0aa0b-e5bc-43af-95e9-d7c3519d47ff.jpg",
   "caption": "A busy European street lined with parked cars and trees.",
   "timestamp": "2025-10-04T16:37:32.784244"
 }
-
-# 🌍 Real-World Applications
-
-- 🛍️ Product image labeling for e-commerce
-- ♿ Accessibility support (auto alt-text)
-- 📸 Photo management & organization
-- 📰 News and media classification
+```
