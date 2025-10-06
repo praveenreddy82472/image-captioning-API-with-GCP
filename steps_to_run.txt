@@ -1,0 +1,63 @@
+step:0 
+
+        access to your google account 
+        gcloud auth application-default login   
+
+step:1  
+      
+        gcloud config list project
+
+step2:
+
+        Go to GCP Console → IAM & Admin → IAM
+
+        Click + Add → Add member:
+
+        Member: 932921748905fjfjjf-compute@developer.gserviceaccount.com
+
+        Role: Artifact Registry Reader (roles/artifactregistry.reader)
+
+step:3
+
+
+      gcloud functions deploy image_upload_trigger --runtime python311 --trigger-resource image-caption-bucket --trigger-event google.storage.object.finalize --entry-point image_upload_trigger --region us-central1 --memory 1Gi
+
+-----------------------------------------------
+
+Step 1: Identify your Cloud Functions service account
+
+      By default, it’s usually:
+
+      PROJECT_NUMBER@cloudservices.gserviceaccount.com
+
+
+      You can find your project number with:
+
+      gcloud projects describe image-captioning-api --format="value(projectNumber)"
+
+Step 2: Grant Artifact Registry Reader role
+
+      Run:
+
+      gcloud projects add-iam-policy-binding image-captioning-api \
+        --member="serviceAccount:932921748905rfrgrrg@cloudservices.gserviceaccount.com" \
+        --role="roles/artifactregistry.reader"
+
+
+
+      gcloud projects add-iam-policy-binding image-captioning-api --member="serviceAccount:service-932921748905@gcf-admin-robot.iam.gserviceaccount.com" --role="roles/datastore.user"
+
+
+
+cloud build,Docker,Artifact_registry:Deploy to Cloud Run
+
+
+      gcloud builds submit --tag gcr.io/image-captioning-api/caption-api
+      gcloud run deploy caption-api --image gcr.io/image-captioning-api/caption-api --platform managed --region us-central1 --allow-unauthenticated
+
+
+Run this in Command Prompt (recommended)
+
+curl -X POST "https://caption-api-t4ktkkp2ca-uc.a.run.app/caption" ^
+  -H "Content-Type: multipart/form-data" ^
+  -F "file=@\"D:\cloud-Azure,GCp\GCP prep\image-captioning-api\image_caption_function\test.jpg\""
