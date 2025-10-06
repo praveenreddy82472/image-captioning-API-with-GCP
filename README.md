@@ -25,7 +25,7 @@ So, I designed a **fully managed, serverless solution** where everything runs on
 
 ## 🏗️ Architecture Overview
 
-![Architecture](gcp_archi.png)
+![Architecture](https://github.com/praveenreddy82472/image-captioning-API-with-GCP/blob/main/image_cap_api.png)
 
 ### **Data Flow**
 1. A user uploads an image via an HTTP POST request to the `/caption` endpoint.
